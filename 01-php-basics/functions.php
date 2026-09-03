@@ -46,4 +46,15 @@ $resultTax = calculateTax(100, 20);
 $resultTax2 = calculateTax(1000);
 
 echo 'Result tax ' . $resultTax . PHP_EOL;
-echo 'Result tax ' . $resultTax2;
+echo 'Result tax ' . $resultTax2 . PHP_EOL;
+
+function multiplyNumbersOnly(int $a, int $b)
+{
+    return $a * $b;
+}
+
+$whatsTheNumber = multiplyNumbersOnly(1, 2);
+$notANumber = multiplyNumbersOnly("abc", 20);
+
+echo 'the number is ' . $whatsTheNumber;
+echo 'wrong output ' . $notANumber;
