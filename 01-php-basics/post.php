@@ -1,25 +1,40 @@
 <?php
-session_start();
 
-if (isset($_GET['name'])) {
-    $urlName = $_GET['name'];
-    echo "From URL: Hello, " . htmlspecialchars($urlName) . "!<br>";
-}
+$name2 = ""; // initial value
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST['name'])) {
-        $_SESSION['name'] = $_POST['name'];
+
+    $name = $_POST["name"];
+
+    echo "Hello, " . $name . "!<br>";
+    echo "Hello, " . $_POST['name'] . "!<br>";
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+
+
+
+    if (isset($_GET["name"])) {
+        $name2 = $_GET["name"];
+
+        echo "This is the data name " . $_GET["name"];
     }
 }
 
-if (isset($_SESSION['name'])) {
-    echo "From SESSION: Welcome back, " . htmlspecialchars($_SESSION['name']) . "!<br>";
-}
 ?>
 
-<form method="POST">
-    <input type="text" name="name" placeholder="POST Test">
-    <button type="submit">Submit via POST</button>
+<form action="" method="POST">
+    <input type="text" name="name">
+
+    <button type="submit">Submit</button>
+
 </form>
 
-<a href="?name=Alex">Try GET with ?name=Alex</a>
+<form action="" method="GET">
+    <input type="text" name="name">
+
+    <p><?php echo $name2 ?></p>
+
+    <button type="submit">Submit GET</button>
+
+</form>
