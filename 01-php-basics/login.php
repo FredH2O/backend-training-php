@@ -5,6 +5,7 @@ session_start();
 $username = "";
 $password = "";
 $error = "";
+$loginSuccessful = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"] ?? "";
@@ -12,10 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     foreach ($users as $user) {
         if ($username === $user["username"] && password_verify($password, $user["password"])) {
-            echo "User found";
-        } else {
-            echo "Wrong credential, try again tomorrow when you aint mad.";
+
+            $loginSuccessful = true;
+            $_SESSION["name"] = $username;
+
+            header("Location: protected.php");
+            exit;
         }
+    }
+
+    if ($username === "" || $password === "") {
+        $error = "Please fill answer the fields provided.";
+    } elseif (!$loginSuccessful) {
+        $error = "Login failed. Try again later.";
     }
 }
 ?>
