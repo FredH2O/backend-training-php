@@ -10,14 +10,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($username === "" || $password === "") {
         $error = "Please fill username and password";
     } elseif (strlen($username) < 3) {
-        $error = "Username must be atleast 3 character long.";
+        $error = "Username must be at least 3 characters long.";
     } elseif (strlen($password) < 6) {
         $error = "Password must be at least 6 characters long.";
     } elseif (strpos($password, "@") === false) {
         $error = "Password must contain an '@' symbol. ";
     } elseif (preg_match_all("/[0-9]/", $password) < 4) {
-        $error = "Password must contain at least 4 number.";
+        $error = "Password must contain at least 4 numbers.";
     } else {
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+        echo $passwordHash;
+
         echo "All good here.";
     }
 }
