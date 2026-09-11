@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($username === "" || $password === "") {
-        $error = "Please fill answer the fields provided.";
+        $error = "Please fill the fields provided or else imma smack ya";
     } elseif (!$loginSuccessful) {
         $error = "Login failed. Try again later.";
     }
