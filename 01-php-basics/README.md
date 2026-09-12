@@ -42,11 +42,26 @@ I'm building things step by step, starting with PHP fundamentals and gradually m
 - Protected pages
 - Logout
 - Session destruction
+- Password hashing with `password_hash()`
+- Password verification with `password_verify()`
+
+### Databases
+
+- MySQL
+- Creating databases
+- Creating tables
+- SQL basics
+- MySQL users and permissions
+- PDO
+- Connecting PHP to MySQL
+- Prepared statements
+- Storing user data
 
 ## 🗂️ Project Structure
 
 ```text
 01-php-basics/
+
 ├── variables.php
 ├── arrays.php
 ├── loops.php
@@ -57,14 +72,40 @@ I'm building things step by step, starting with PHP fundamentals and gradually m
 ├── session.php
 ├── login.php
 ├── protected.php
-└── logout.php
+├── logout.php
+├── register.php
+├── config.php
+└── .gitignore
 ```
 
 The files are small exercises that build on each other as I learn new concepts.
 
+`config.php` contains the local database connection and is excluded from Git using `.gitignore`.
+
+## 🗄️ Current Database
+
+MySQL is running locally with a database called:
+
+```text
+backend_training
+```
+
+The current `users` table contains:
+
+```text
+users
+├── id
+├── username
+└── password
+```
+
+Passwords are hashed before being stored rather than saving them as plain text.
+
 ## 🚀 Running Locally
 
-Make sure PHP is installed, then from the project directory run:
+Make sure PHP and MySQL are installed.
+
+From the project directory, start the PHP development server:
 
 ```bash
 php -S localhost:8000
@@ -75,6 +116,8 @@ Then open:
 ```text
 http://localhost:8000
 ```
+
+MySQL can be accessed locally using the MySQL command line.
 
 ## 🎯 Goal
 
@@ -93,10 +136,15 @@ I'm focusing on understanding how things work rather than simply copying solutio
 - [x] JSON
 - [x] Sessions
 - [x] Basic login/logout
-- [ ] Databases
+- [x] Password hashing
+- [x] MySQL installation
+- [x] Database creation
+- [x] `users` table creation
+- [x] Basic PDO connection setup
+- [ ] Complete PHP → MySQL connection test
+- [ ] Store registered users in MySQL
 - [ ] CRUD
-- [ ] Password hashing
-- [ ] MySQL
+- [ ] Password verification
 - [ ] APIs
 - [ ] Laravel
 - [ ] Build a complete backend project

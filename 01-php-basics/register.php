@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . "/config.php";
+
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
